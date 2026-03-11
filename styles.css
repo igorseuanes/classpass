@@ -1,0 +1,153 @@
+@font-face {
+  font-family: "TTNorms";
+  src: url(assets/fonts/TTNorms-Regular.otf) format("openType");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Circuit";
+  src: url(assets/fonts/Circuit.otf) format("openType");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@keyframes scrolling {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+body {
+  font-family: "TTNorms";
+  margin: 0;
+
+  button {
+    cursor: pointer;
+  }
+
+  .sign-button {
+    color: #fff;
+    line-height: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    background: #0055ff;
+    padding: 6px 12px;
+    border-radius: 100px;
+    height: 32px;
+    border: 0;
+  }
+
+  header {
+    padding: 16px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .links-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+
+      a {
+        color: #000000;
+        line-height: 20px;
+        font-size: 14px;
+        text-decoration: none;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .hero {
+    display: flex;
+    background: #e6f3ff;
+    justify-content: flex-end;
+
+    .content {
+      width: -webkit-fill-available;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .left-content {
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+
+        .text {
+          gap: 12px;
+          display: flex;
+          flex-direction: column;
+
+          h1 {
+            color: #000;
+            line-height: 56px;
+            font-size: 52px;
+            margin: 0;
+            font-weight: 600;
+            font-family: "Circuit";
+          }
+
+          span {
+            color: #000;
+            line-height: 24px;
+            font-size: 16px;
+          }
+        }
+
+        .ctas {
+          display: flex;
+          gap: 12px;
+
+          #signup {
+            padding: 8px 24px;
+            height: 48px;
+            font-size: 16px;
+          }
+
+          #learn-more {
+            color: #0055ff;
+            padding: 8px 24px;
+            border: 1px solid;
+            border-radius: 100px;
+            background: transparent;
+            font-weight: 500;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+
+    .banner-container {
+      height: 789px;
+      width: 669px;
+      min-width: 669px;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  #animated-banners-container {
+    align-items: center;
+    background: #c0e0ff;
+    display: flex;
+    height: 132px;
+    overflow: hidden;
+
+    .img-container {
+      animation: scrolling 20s linear infinite;
+    }
+
+    img {
+      height: 45px;
+    }
+  }
+}
