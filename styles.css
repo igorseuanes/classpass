@@ -404,9 +404,34 @@ body {
 
     .cards-container {
       margin: auto;
+      position: relative;
+
+      &.show-last {
+        .cards {
+          margin-left: -236px;
+        }
+      }
+
+      svg {
+        cursor: pointer;
+        &.left {
+          position: absolute;
+          top: 50%;
+          transform: translate(0px, -50%);
+          left: -75px;
+        }
+        &.right {
+          position: absolute;
+          top: 50%;
+          transform: translate(0px, -50%);
+          left: calc(var(--screen-width) - 200px);
+        }
+      }
+
       .cards {
         gap: 32px;
         display: flex;
+        transition: all 0.3s ease;
 
         .spotlight-card {
           gap: 16px;
@@ -439,6 +464,11 @@ body {
             .src {
               text-align: left;
             }
+          }
+
+          a {
+            cursor: pointer;
+            text-decoration: underline;
           }
         }
       }
