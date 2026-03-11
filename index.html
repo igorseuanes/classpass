@@ -110,6 +110,9 @@
           in the news:</span
         >
       </div>
+      <div class="cards-container">
+        <div class="cards"></div>
+      </div>
     </section>
     <section id="footer">
       <div class="text-container">
@@ -219,7 +222,6 @@
     ];
 
     const sponsorItems = document.querySelector(".sponsor-items");
-    console.log(sponsorsData);
     sponsorsData.forEach((data, i) => {
       console.log("ran for");
       const element = document.createElement("div");
@@ -247,6 +249,44 @@
         child.classList.add("active");
         sponsorItems.childNodes[i].classList.add("active");
       });
+    });
+
+    const spotlightData = [
+      {
+        title:
+          "“The fastest-growing sport in America is no longer just a trend—it’s a movement.”",
+        src: "—Sports & Rec Weekly",
+      },
+      {
+        title:
+          "“Pickleball is blending competition and community like no other sport right now”",
+        src: "—GameOn Magazine",
+      },
+      {
+        title:
+          '“The sport that went viral is now a national obsession—everyone is picking up a paddle."',
+        src: "—Athlete’s Edge",
+      },
+      {
+        title:
+          '"Fitness, fun, and friendly rivalries—pickleball is officially here to stay."',
+        src: "—NextGen Sports",
+      },
+    ];
+    const spotlightCardsContainer = document.querySelector("#spotlight .cards");
+
+    spotlightData.forEach((data, i) => {
+      const element = document.createElement("div");
+      element.classList.add("spotlight-card");
+      element.innerHTML = `
+            <img src="assets/images/Press_Image0${i + 1}.jpg" />
+            <div class="text-container">
+                <span class="title">${data.title}</span>
+                <span class="src">${data.src}</span>
+            </div>
+      `;
+
+      spotlightCardsContainer.appendChild(element);
     });
   </script>
 </html>
