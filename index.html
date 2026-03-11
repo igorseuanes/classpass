@@ -32,7 +32,7 @@
         <button class="sign-button">Sign up now</button>
       </div>
     </header>
-    <div class="hero">
+    <section class="hero">
       <div class="content">
         <div class="left-content">
           <div class="text">
@@ -55,8 +55,8 @@
       <div class="banner-container">
         <img src="assets/images/Hero_Desktop.jpg" alt="Hero Desktop" />
       </div>
-    </div>
-    <div id="animated-banners-container">
+    </section>
+    <section id="animated-banners-container">
       <div class="img-container">
         <img
           src="assets/images/banner_logos/PAR_FULL-logo-bar.png"
@@ -69,14 +69,174 @@
           alt="banner logos"
         />
       </div>
-    </div>
+    </section>
+    <section id="what-to-expect">
+      <div class="text-container">
+        <h2>What to expect</h2>
+        <span
+          >The day will be filled with plenty of fun and action. Here’s what to
+          expect:</span
+        >
+      </div>
+      <div class="image-cols"></div>
+    </section>
+    <section id="schedule">
+      <div class="content">
+        <h3>Schedule of events</h3>
+        <div class="items-container"></div>
+      </div>
+    </section>
+    <section id="sponsors">
+      <div class="title-container">
+        <h3>About our sponsors</h3>
+        <span
+          >Special thanks to our sponsors who have helped make this event
+          possible.</span
+        >
+      </div>
+      <div class="menu">
+        <div class="menu-item active"><span>Sip & Pickle Wynwood</span></div>
+        <div class="menu-item"><span>Pressed Juicery</span></div>
+        <div class="menu-item"><span>SET Active</span></div>
+      </div>
+      <div class="sponsor-items"></div>
+    </section>
+    <section id="spotlight">
+      <div class="text-container">
+        <h3>Pickleball in the spotlight</h3>
+        <span
+          >Pickleball is the fastest growing sport globally, increasing in
+          popularity 445% YoY. Here’s what people have to say about pickleball
+          in the news:</span
+        >
+      </div>
+    </section>
   </body>
-  <!-- <script>
-    const parent = document.querySelector("#animated-banners");
-    for (let i = 0; i < 10; i++) {
-      const image = document.createElement("img");
-      image.src = `assets/images/banner_logos/logo0${i + 1}.png`;
-      parent.appendChild(image);
-    }
-  </script> -->
+  <script>
+    const whatToExpectColsData = [
+      {
+        title: "Exclusive event swag & prizes",
+        text: "Get limited-edition tournament gear and top prizes designed for competitors who bring their best to the court.",
+      },
+      {
+        title: "Live DJ & entertainment",
+        text: "Have fun in a high-energy atmosphere with curated music and live entertainment that keeps the momentum going.",
+      },
+      {
+        title: "All-day matches for all levels",
+        text: "Compete in a structured bracket system tailored for every skill level, ensuring fast-paced games and a fair playing field.",
+      },
+      {
+        title: "Complementary food & drinks",
+        text: "Refuel with a selection of cold-pressed juices and nutritious snacks, available throughout the event to keep players at peak performance.",
+      },
+    ];
+    const colsParentElement = document.querySelector(
+      "#what-to-expect .image-cols",
+    );
+    whatToExpectColsData.forEach((item, i) => {
+      const element = document.createElement("div");
+      element.classList.add("what-to-expect-item");
+      element.innerHTML = `
+            <img src="assets/images/What-to-expect_Image0${i + 1}.jpg" />
+            <div class="content">
+                <span class="title">${item.title}</span>
+                <span class="text">${item.text}</span>
+            </div>
+        `;
+      colsParentElement.appendChild(element);
+    });
+
+    const scheduleData = [
+      {
+        time: "8:00 AM",
+        text: "Check-in & warm-up courts open",
+      },
+      {
+        time: "9:00 AM",
+        text: "Opening ceremony & player briefing",
+      },
+      {
+        time: "9:30 AM",
+        text: "Tournament kickoff—round 1",
+      },
+      {
+        time: "12:00 PM",
+        text: "Lunch break & DJ set",
+      },
+      {
+        time: "1:00 PM",
+        text: "Quarterfinal matches",
+      },
+      {
+        time: "2:30 PM",
+        text: "Semifinals",
+      },
+      {
+        time: "4:00 PM",
+        text: "Championship match",
+      },
+      {
+        time: "5:00 PM",
+        text: "Awards ceremony",
+      },
+    ];
+
+    const scheduleParent = document.querySelector("#schedule .items-container");
+    scheduleData.forEach((item) => {
+      const element = document.createElement("div");
+      element.classList.add("schedule-item");
+      element.innerHTML = `
+            <span class="time">${item.time}</span>
+            <span class="text">${item.text}</span>
+        `;
+
+      scheduleParent.appendChild(element);
+    });
+    const sponsorsData = [
+      {
+        title: "Sip & Pickle Wynwood",
+        text: "Sip and Pickle at The Wynwood Marketplace is an exciting new concept blending the fun Pickleball with the vibrant atmosphere of Wynwood. Whether you’re a seasoned player or new to the game, Sip and Pickle invites you to come play, explore, and entertain your guests while enjoying the thrill of the game.",
+      },
+      {
+        title: "Pressed Juicery",
+        text: "Pressed continues to grow with stores throughout the U.S., as well as an expanding online and wholesale presence. Because they are constantly evolving, they now offer an array of wholesome plant-based foods in addition to their signature cold-pressed juices to keep you nourished throughout the day. It’s all part of their ongoing mission to make plant-forward living as convenient and delicious as possible.",
+      },
+      {
+        title: "SET Active",
+        text: "SET is here to simplify the way you get dressed, because let’s be real, life is complicated enough. In an effort to be more effortless, SET set out to design clothes that blur the line between form and function.  The result? Elevated essentials that can go wherever the day takes you—whether that’s getting active or actively chilling on the couch. That’s right, no more changing your outfit a million times over or sacrificing on style just to feel comfortable. Their SETs do it all.",
+      },
+    ];
+
+    const sponsorItems = document.querySelector(".sponsor-items");
+    console.log(sponsorsData);
+    sponsorsData.forEach((data, i) => {
+      console.log("ran for");
+      const element = document.createElement("div");
+      element.classList.add("sponsor-item");
+      i === 0 && element.classList.add("active");
+      element.innerHTML = `
+            <div class="content">
+                <span class="title">${data.title}</span>
+                <span class="text">${data.text}</span>
+            </div>
+            <img src="assets/images/Sponsors_Image0${i + 1}.jpg" />
+        `;
+
+      sponsorItems.appendChild(element);
+    });
+
+    const sponsorsMenu = document.querySelector("#sponsors .menu");
+    const sponsorMenuItems = sponsorsMenu.querySelectorAll(".menu-item");
+    sponsorMenuItems.forEach((child, i) => {
+      child.addEventListener("click", () => {
+        sponsorMenuItems.forEach((child) => child.classList.remove("active"));
+        sponsorItems.childNodes.forEach((child) =>
+          child.classList.remove("active"),
+        );
+        child.classList.add("active");
+        sponsorItems.childNodes[i].classList.add("active");
+      });
+    });
+  </script>
 </html>
