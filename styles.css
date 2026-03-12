@@ -777,6 +777,11 @@ body {
       .spotlight-card {
         flex: 0 0 calc(100vw - 64px);
         scroll-snap-align: center;
+
+        .text-container,
+        img {
+          width: 100%;
+        }
       }
 
       .text-container {
