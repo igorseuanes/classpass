@@ -34,7 +34,9 @@
           >Corporate wellness</a
         >
         <a href="https://classpass.com/login">Log in</a>
-        <button class="sign-button">Sign up now</button>
+        <a href="login.html">
+          <button class="sign-button">Sign up now</button>
+        </a>
       </div>
     </header>
     <section class="hero">
@@ -52,7 +54,9 @@
             >
           </div>
           <div class="ctas">
-            <button id="signup" class="sign-button">Sign up now</button>
+            <a href="login.html">
+              <button id="signup" class="sign-button">Sign up now</button>
+            </a>
             <button id="learn-more">Learn more</button>
           </div>
         </div>
@@ -249,6 +253,13 @@
     const screenWidth = window.innerWidth;
     const root = document.documentElement;
     root.style.setProperty("--screen-width", screenWidth + "px");
+
+    const learnMoreCTA = document.querySelector("section.hero #learn-more");
+    learnMoreCTA.addEventListener("click", () => {
+      document
+        .querySelector("#what-to-expect")
+        .scrollIntoView({ behavior: "smooth" });
+    });
 
     const whatToExpectColsData = [
       {
