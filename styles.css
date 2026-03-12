@@ -231,17 +231,24 @@ body {
   }
 
   #schedule {
-    background: blue;
     padding: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url(assets/images/Schedule_Background_Image.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: left;
+    position: relative;
+
+    img {
+      position: absolute;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+    }
 
     .content {
+      z-index: 2;
       gap: 24px;
       width: 604px;
       background: #fff;
@@ -574,6 +581,176 @@ body {
       height: 48px;
       padding: 0 24px;
       font-size: 16px;
+    }
+  }
+}
+@media (min-width: 846px) {
+}
+
+@media (max-width: 845px) {
+  .hero .banner-container,
+  header {
+    display: none !important;
+  }
+  body {
+    font-family: "TTNorms";
+    margin: 0;
+
+    .hero {
+      justify-content: flex-start;
+      flex-direction: column;
+      padding-bottom: 48px;
+
+      .content {
+        padding: 0 20px;
+
+        .left-content {
+          .text {
+            h1 {
+              text-align: center;
+              line-height: 40px;
+              font-size: 36px;
+            }
+
+            span {
+              text-align: center;
+            }
+          }
+
+          .ctas {
+            flex-direction: column;
+
+            #signup {
+              width: 100%;
+            }
+
+            #learn-more {
+              height: 48px;
+            }
+          }
+        }
+      }
+    }
+
+    #what-to-expect {
+      padding: 48px 20px;
+      gap: 32px;
+
+      .text-container {
+        align-items: baseline;
+
+        h2 {
+          line-height: 32px;
+          font-size: 28px;
+        }
+      }
+
+      .image-cols {
+        flex-direction: column;
+        width: 100%;
+
+        .what-to-expect-item {
+          width: 100%;
+        }
+      }
+    }
+
+    #schedule {
+      flex-direction: column;
+      padding: 0;
+
+      img {
+        position: unset;
+      }
+
+      .content {
+        width: 100%;
+        border-radius: 0;
+        gap: 12px;
+
+        h3 {
+          margin-top: 32px;
+          text-align: left;
+          margin-left: 20px;
+          font-size: 28px;
+          line-height: 32px;
+        }
+        .items-container {
+          margin: 0 20px;
+
+          .schedule-item {
+            height: fit-content;
+            align-items: baseline;
+
+            .time {
+              font-weight: 500;
+            }
+          }
+        }
+      }
+    }
+
+    #sponsors {
+      padding: 48px 20px 48px;
+      gap: 32px;
+
+      .title-container {
+        align-items: start;
+
+        h3 {
+          font-size: 28px;
+        }
+
+        span {
+          font-size: 16px;
+        }
+      }
+      .menu {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .sponsor-items {
+        padding: 0;
+
+        .sponsor-item {
+          flex-direction: column;
+          width: 100%;
+          gap: 32px;
+
+          .content {
+            order: 1;
+
+            .title {
+              font-size: 28px;
+              line-height: 32px;
+            }
+          }
+
+          img {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    #footer {
+      padding: 48px 20px;
+      align-items: baseline;
+
+      .text-container {
+        width: 100%;
+        align-items: baseline;
+
+        h3 {
+          font-size: 28px;
+          line-height: 32px;
+        }
+
+        span {
+          text-align: left;
+        }
+      }
     }
   }
 }
