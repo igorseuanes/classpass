@@ -23,12 +23,17 @@
         </svg>
       </div>
       <div class="links-container">
-        <a href="">Find class & appointments</a>
-        <a href="">Plans</a>
-        <a href="">How credits work</a>
-        <a href="">List my business</a>
-        <a href="">Corporate wellness</a>
-        <a href="">Log in</a>
+        <a href="https://classpass.com/search">Find class & appointments</a>
+        <a href="https://classpass.com/plans">Plans</a>
+        <a href="https://classpass.com/features">How credits work</a>
+        <a href="https://classpass.com/partners?utm_content=consumer_nav"
+          >List my business</a
+        >
+        <a
+          href="https://classpass.com/corporate-wellness?utm_content=consumer_nav"
+          >Corporate wellness</a
+        >
+        <a href="https://classpass.com/login">Log in</a>
         <button class="sign-button">Sign up now</button>
       </div>
     </header>
@@ -215,6 +220,10 @@
           </defs>
         </svg>
       </div>
+      <div class="dots-container">
+        <div class="dot" data-place="0"></div>
+        <div class="dot" data-place="1"></div>
+      </div>
     </section>
     <section id="footer">
       <div class="text-container">
@@ -228,6 +237,15 @@
     </section>
   </body>
   <script>
+    const header = document.querySelector("header");
+    header.addEventListener("click", (e) => {
+      const target = e.target;
+      if (!target.closest("a, button, .logo")) {
+        console.log("deve rodar");
+        window.scrollTo({ top, behavior: "smooth" });
+      }
+    });
+
     const screenWidth = window.innerWidth;
     const root = document.documentElement;
     root.style.setProperty("--screen-width", screenWidth + "px");
@@ -329,7 +347,6 @@
 
     const sponsorItems = document.querySelector(".sponsor-items");
     sponsorsData.forEach((data, i) => {
-      console.log("ran for");
       const element = document.createElement("div");
       element.classList.add("sponsor-item");
       i === 0 && element.classList.add("active");
@@ -375,7 +392,7 @@
       },
       {
         title:
-          '"Fitness, fun, and friendly rivalries—pickleball is officially here to stay."',
+          '"Fitness, fun, and friendly rivalries—pickleball is officially here to<br>stay."',
         src: "—NextGen Sports",
       },
     ];
@@ -403,6 +420,17 @@
       svg.addEventListener("click", () => {
         const isFirst = i == 0;
         if (isFirst) {
+          cardsContainer.classList.remove("show-last");
+        } else {
+          cardsContainer.classList.add("show-last");
+        }
+      });
+    });
+
+    const dots = document.querySelectorAll(".dot");
+    dots.forEach((dot, i) => {
+      dot.addEventListener("click", () => {
+        if (i == 0) {
           cardsContainer.classList.remove("show-last");
         } else {
           cardsContainer.classList.add("show-last");
