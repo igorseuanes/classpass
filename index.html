@@ -229,6 +229,12 @@
         <div class="dot" data-place="0"></div>
         <div class="dot" data-place="1"></div>
       </div>
+      <div class="mobile-dots-container" style="display: none">
+        <div class="dot active" data-place="0"></div>
+        <div class="dot" data-place="1"></div>
+        <div class="dot" data-place="2"></div>
+        <div class="dot" data-place="3"></div>
+      </div>
     </section>
     <section id="footer">
       <div class="text-container">
@@ -439,7 +445,7 @@
       });
     });
 
-    const dots = document.querySelectorAll(".dot");
+    const dots = document.querySelectorAll(".dots-container .dot");
     dots.forEach((dot, i) => {
       dot.addEventListener("click", () => {
         if (i == 0) {
@@ -447,6 +453,36 @@
         } else {
           cardsContainer.classList.add("show-last");
         }
+      });
+    });
+
+    const mobdots = document.querySelectorAll(".mobile-dots-container .dot");
+    mobdots.forEach((dot, i) => {
+      dot.addEventListener("click", () => {
+        // const cardWidth = document
+        //   .querySelector("#spotlight .spotlight-card")
+        //   .getBoundingClientRect().width;
+        // const w = window.innerWidth;
+
+        // spotlightCardsContainer.style.marginLeft =
+        //   i == 0 ? "0" : `calc(-${w}px * ${i} - 20px)`;
+
+        // const container = document.querySelector("#spotlight");
+        // const targetCard = document.querySelectorAll(
+        //   "#spotlight .spotlight-card",
+        // )[i];
+
+        // Calculate the exact position:
+        // The target card's left position relative to the container
+
+        // console.log("targetCard.offsetLeft", targetCard.offsetLeft);
+        // Execute scroll on the container, not the window
+        // container.scrollTo({
+        //   left: targetCard.offsetLeft + 2,
+        //   behavior: "smooth",
+        // });
+        mobdots.forEach((d) => d.classList.remove("active"));
+        dot.classList.add("active");
       });
     });
   </script>
