@@ -21,6 +21,7 @@
 }
 
 body {
+  cursor: default;
   font-family: "TTNorms";
   margin: 0;
 
