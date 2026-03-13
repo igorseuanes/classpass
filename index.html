@@ -259,6 +259,12 @@
 
     const screenWidth = window.innerWidth;
     const root = document.documentElement;
+    window.addEventListener("resize", () => {
+      const screenWidth = window.innerWidth;
+
+      root.style.setProperty("--screen-width", screenWidth + "px");
+      console.log("resize", root.style.getPropertyValue("--screen-width"));
+    });
     root.style.setProperty("--screen-width", screenWidth + "px");
 
     const learnMoreCTA = document.querySelector("section.hero #learn-more");
@@ -456,33 +462,37 @@
       });
     });
 
+    let activeSpotlightIndex = 0;
+    const allCards = document.querySelectorAll(".spotlight-card");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = Array.from(allCards).indexOf(entry.target);
+            activeSpotlightIndex = index;
+            console.log("activeSpotlightIndex ", activeSpotlightIndex);
+          }
+        });
+      },
+      { root: document.querySelector("#spotlight"), threshold: 0.6 },
+    );
+    allCards.forEach((card) => observer.observe(card));
+
     const mobdots = document.querySelectorAll(".mobile-dots-container .dot");
+    const changeDots = (index) => {
+      mobdots.forEach((d) => d.classList.remove("active"));
+      mobdots[index].classList.add("active");
+    };
+
     mobdots.forEach((dot, i) => {
       dot.addEventListener("click", () => {
-        // const cardWidth = document
-        //   .querySelector("#spotlight .spotlight-card")
-        //   .getBoundingClientRect().width;
-        // const w = window.innerWidth;
-
-        // spotlightCardsContainer.style.marginLeft =
-        //   i == 0 ? "0" : `calc(-${w}px * ${i} - 20px)`;
-
-        // const container = document.querySelector("#spotlight");
-        // const targetCard = document.querySelectorAll(
-        //   "#spotlight .spotlight-card",
-        // )[i];
-
-        // Calculate the exact position:
-        // The target card's left position relative to the container
-
-        // console.log("targetCard.offsetLeft", targetCard.offsetLeft);
-        // Execute scroll on the container, not the window
-        // container.scrollTo({
-        //   left: targetCard.offsetLeft + 2,
-        //   behavior: "smooth",
-        // });
-        mobdots.forEach((d) => d.classList.remove("active"));
-        dot.classList.add("active");
+        changeDots(i);
+        const targetCard = allCards[i];
+        targetCard.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+          inline: "center",
+        });
       });
     });
   </script>
