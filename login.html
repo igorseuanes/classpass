@@ -141,9 +141,40 @@
                 <label for="email">Email address*</label>
               </div>
               <div id="experience" class="input-wrap">
-                <select name="experience" id="experience">
+                <!-- <select name="experience" id="experience">
                   <option value="0">teste</option>
-                </select>
+                  <option value="1">Novice</option>
+                  <option value="2">Beginner</option>
+                  <option value="3">Intermediate</option>
+                  <option value="4">Advanced</option>
+                </select> -->
+                <div class="custom-select-wrapper" id="mySelect">
+                  <button type="button" class="select-trigger">
+                    <!-- <span class="label">Pickleball experience level*</span> -->
+                    <span class="current-value">Please select</span>
+                    <div class="arrow">
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M3.86395 5.4697C3.57111 5.17686 3.09631 5.17697 2.8034 5.4697C2.51051 5.7626 2.51051 6.23736 2.8034 6.53025L7.46942 11.1972C7.7622 11.49 8.23704 11.4898 8.52996 11.1972L13.197 6.53025C13.4898 6.23736 13.4898 5.7626 13.197 5.4697C12.9041 5.17681 12.4293 5.17681 12.1364 5.4697L8.00067 9.60544L3.86395 5.4697Z"
+                          fill="#5A6272"
+                        />
+                      </svg>
+                    </div>
+                  </button>
+
+                  <ul class="options-list">
+                    <li data-value="novice">Novice</li>
+                    <li data-value="beginner">Beginner</li>
+                    <li data-value="intermediate">Intermediate</li>
+                    <li data-value="advanced">Advanced</li>
+                  </ul>
+                </div>
                 <label for="experience">Pickleball experience level*</label>
               </div>
             </div>
@@ -164,7 +195,7 @@
             >
           </div>
           <a href="thanks.html">
-            <button type="submit">Join waitlist</button>
+            <button type="submit" disabled>Join waitlist</button>
           </a>
         </div>
         <img src="assets/images/login.png" alt="" />
@@ -179,9 +210,13 @@
       window.location.replace("thanks.html");
     });
 
-    const logo = document.querySelector("header svg");
-    logo.addEventListener("click", () => {
-      window.location.replace("index.html");
+    const logos = document.querySelectorAll(
+      "header > svg, .mobile-header > svg",
+    );
+    logos.forEach((logo) => {
+      logo.addEventListener("click", () => {
+        window.location.replace("index.html");
+      });
     });
 
     const mobHeaderMenuTrigger = document.querySelector(
@@ -189,6 +224,78 @@
     );
     mobHeaderMenuTrigger.addEventListener("click", () => {
       document.querySelector(".header-menu").classList.toggle("active");
+    });
+
+    const inputs = document.querySelectorAll("input[type='text']");
+    console.log(inputs);
+    const emailInput = document.querySelector("[type='email']");
+    const phoneInput = document.querySelector("[type='number']");
+    const consentInput = document.querySelector("[type='checkbox']");
+    const button = document.querySelector("button[type='submit']");
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^\+?[\d\s\-\(\)]{7,15}$/;
+
+    function validateForm() {
+      const isEmailValid = emailRegex.test(emailInput.value.trim());
+      const isPhoneValid = phoneRegex.test(phoneInput.value.trim());
+      const isExperienceSelected = !!document.querySelector(
+        ".options-list .selected",
+      );
+
+      const allFilled = Array.from(inputs).every(
+        (input) => input.value.trim() !== "",
+      );
+      console.log({ isEmailValid, isPhoneValid, allFilled });
+      button.disabled = !(
+        allFilled &&
+        isEmailValid &&
+        isPhoneValid &&
+        consentInput.checked &&
+        isExperienceSelected
+      );
+    }
+
+    [...inputs, phoneInput, emailInput, consentInput].forEach((input) =>
+      input.addEventListener("input", validateForm),
+    );
+    // document.querySelectorAll(".options-list li").forEach((option) => {
+    //   option.addEventListener("click", validateForm);
+    // });
+
+    const wrapper = document.getElementById("mySelect");
+    const trigger = wrapper.querySelector(".select-trigger");
+    const options = wrapper.querySelectorAll(".options-list li");
+    const currentValueText = wrapper.querySelector(".current-value");
+
+    // 1. Toggle the dropdown
+    trigger.addEventListener("click", (e) => {
+      e.preventDefault(); // Extra insurance against refreshing
+      wrapper.classList.toggle("is-open");
+    });
+
+    // 2. Handle Option Selection
+    options.forEach((option) => {
+      option.addEventListener("click", (e) => {
+        // Update the text
+        currentValueText.innerText = option.innerText;
+
+        // Close the menu
+        wrapper.classList.remove("is-open");
+
+        // Optional: Add 'selected' class for styling
+        options.forEach((opt) => opt.classList.remove("selected"));
+        option.classList.add("selected");
+
+        console.log("Selected value:", option.dataset.value);
+        validateForm();
+      });
+    });
+
+    // 3. Close if the user clicks anywhere else on the screen
+    document.addEventListener("click", (e) => {
+      if (!wrapper.contains(e.target)) {
+        wrapper.classList.remove("is-open");
+      }
     });
   </script>
 </html>

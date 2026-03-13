@@ -114,9 +114,13 @@
     </section>
   </body>
   <script>
-    const logo = document.querySelector("header svg");
-    logo.addEventListener("click", () => {
-      window.location.replace("index.html");
+    const logos = document.querySelectorAll(
+      "header > svg, .mobile-header > svg",
+    );
+    logos.forEach((logo) => {
+      logo.addEventListener("click", () => {
+        window.location.replace("index.html");
+      });
     });
 
     const mobHeaderMenuTrigger = document.querySelector(
