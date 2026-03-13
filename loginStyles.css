@@ -204,3 +204,120 @@ body {
     }
   }
 }
+
+.header-menu,
+.mobile-header .buttons-container svg[viewBox="0 0 17 15"] {
+  display: none;
+}
+
+@media (max-width: 845px) {
+  body:has(.header-menu.active) {
+    .mobile-header .buttons-container svg[viewBox="0 0 17 15"] {
+      display: block;
+    }
+    .mobile-header .buttons-container svg[viewBox="0 0 18 15"] {
+      display: none !important;
+    }
+  }
+
+  header {
+    padding: 15px 20px !important;
+    > svg {
+      display: none;
+    }
+  }
+
+  .header-menu {
+    font-family: "TTNorms";
+    display: flex !important;
+    position: absolute;
+    background: #fff;
+    z-index: 100;
+    width: calc(100% + 40px);
+    left: -20px;
+    flex-direction: column;
+    padding: 0 20px;
+    top: -500px;
+    transition: all 0.3s ease;
+
+    &.active {
+      top: 46px;
+    }
+    a {
+      color: #000;
+      border-bottom: 1px solid #dddfe4;
+      padding: 20px 0;
+      text-decoration: none;
+    }
+  }
+  .mobile-header {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
+
+    svg {
+      z-index: 200;
+      background: #fff;
+    }
+    .buttons-container {
+      z-index: 200;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+
+      button {
+        color: #fff;
+        line-height: 20px;
+        font-size: 14px;
+        height: 32px;
+        border-radius: 100px;
+        padding: 6px 16px;
+        background: #0055ff;
+        border: 0;
+      }
+    }
+  }
+
+  section.content {
+    gap: 32px;
+    padding: 48px 20px;
+
+    .page-title-container {
+      width: 100%;
+
+      h1 {
+        font-size: 36px;
+        line-height: 40px;
+      }
+    }
+
+    form {
+      flex-direction: column;
+
+      .contact-info {
+        width: 100%;
+
+        .form-container {
+          .text-container {
+            align-items: center;
+
+            span {
+              text-align: center;
+            }
+          }
+          .form {
+            .names-container {
+              flex-direction: column;
+            }
+          }
+        }
+      }
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
