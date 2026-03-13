@@ -62,7 +62,7 @@ body {
     }
 
     .login-container {
-      gap: 100px;
+      gap: 32px;
       display: flex;
 
       .contact-info {
@@ -205,8 +205,9 @@ body {
   }
 }
 
+.mobile-header,
 .header-menu,
-.mobile-header .buttons-container svg[viewBox="0 0 17 15"] {
+.buttons-container svg[viewBox="0 0 17 15"] {
   display: none;
 }
 
@@ -322,6 +323,12 @@ button[type="submit"] {
 }
 
 @media (max-width: 845px) {
+  img[src="assets/images/login.png"] {
+    display: none !important;
+  }
+  img[src="assets/images/image.png"] {
+    display: block !important;
+  }
   body:has(.header-menu.active) {
     .mobile-header .buttons-container svg[viewBox="0 0 17 15"] {
       display: block;
