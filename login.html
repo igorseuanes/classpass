@@ -4,9 +4,24 @@
     <link rel="stylesheet" href="loginStyles.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
+    <title>Sign up</title>
+    <script src="mobHeader.js" defer></script>
+    <link rel="stylesheet" href="global.css" />
   </head>
   <body>
+    <div class="header-menu">
+      <a href="https://classpass.com/search">Find class & appointments</a>
+      <a href="https://classpass.com/plans">Plans</a>
+      <a href="https://classpass.com/features">How credits work</a>
+      <a href="https://classpass.com/partners?utm_content=consumer_nav"
+        >List my business</a
+      >
+      <a
+        href="https://classpass.com/corporate-wellness?utm_content=consumer_nav"
+        >Corporate wellness</a
+      >
+      <a href="https://classpass.com/login">Log in</a>
+    </div>
     <header>
       <svg
         width="124"
@@ -20,7 +35,7 @@
           fill="black"
         />
       </svg>
-      <div class="mobile-header">
+      <!-- <div class="mobile-header">
         <svg
           width="41"
           height="32"
@@ -101,7 +116,8 @@
           >
           <a href="https://classpass.com/login">Log in</a>
         </div>
-      </div>
+      </div> -->
+      <mob-header></mob-header>
     </header>
     <section class="content">
       <div class="page-title-container">
@@ -220,12 +236,12 @@
       });
     });
 
-    const mobHeaderMenuTrigger = document.querySelector(
-      ".mobile-header .buttons-container .menu-toggle",
-    );
-    mobHeaderMenuTrigger.addEventListener("click", () => {
-      document.querySelector(".header-menu").classList.toggle("active");
-    });
+    // const mobHeaderMenuTrigger = document.querySelector(
+    //   ".mobile-header .buttons-container .menu-toggle",
+    // );
+    // mobHeaderMenuTrigger.addEventListener("click", () => {
+    //   document.querySelector(".header-menu").classList.toggle("active");
+    // });
 
     const inputs = document.querySelectorAll("input[type='text']");
     console.log(inputs);

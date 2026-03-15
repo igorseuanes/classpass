@@ -1,0 +1,24 @@
+.header-menu {
+  display: flex !important;
+  position: fixed;
+  background: #fff;
+  z-index: 100;
+  width: 100%;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  height: 100%;
+  left: 0;
+  max-width: 100%;
+  top: -100%;
+  padding: 0 20px;
+
+  &.active {
+    top: 60px !important;
+  }
+  a {
+    color: #000;
+    border-bottom: 1px solid #dddfe4;
+    padding: 20px 0;
+    text-decoration: none;
+  }
+}

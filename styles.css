@@ -18,6 +18,9 @@
   font-weight: normal;
   font-style: normal;
 }
+* {
+  box-sizing: border-box;
+}
 
 @keyframes scrolling {
   0% {
@@ -26,6 +29,21 @@
   100% {
     transform: translateX(-100%);
   }
+}
+
+button {
+  font-family: "TTNorms";
+}
+
+header button,
+.sign-button {
+  &:hover {
+    background: #008aff;
+  }
+}
+
+button#learn-more:hover {
+  background: #0055ff0d !important;
 }
 
 img[src="assets/images/Hero_mobile.jpg"] {
@@ -72,10 +90,31 @@ img[src="assets/images/Hero_mobile.jpg"] {
   }
 }
 
+@media (min-width: 1600px) {
+  .hero {
+    justify-content: center !important;
+    gap: 100px !important;
+
+    .content {
+      width: fit-content !important;
+    }
+  }
+
+  #spotlight {
+    svg,
+    .dots-container {
+      display: none !important;
+    }
+  }
+}
+
 body {
   cursor: default;
   font-family: "TTNorms";
   margin: 0;
+
+  section {
+  }
 
   button {
     cursor: pointer;
@@ -241,13 +280,16 @@ body {
     .image-cols {
       display: flex;
       gap: 32px;
+      max-width: 100%;
+      justify-content: center;
 
       .what-to-expect-item {
         gap: 16px;
         display: flex;
         width: 286px;
-        min-width: 200px;
         flex-direction: column;
+        flex: 1 1 auto;
+        min-width: 185px;
 
         img {
           border-radius: 16px;
@@ -406,6 +448,7 @@ body {
         top: 0;
         left: 0;
         display: none;
+        gap: 100px;
 
         &.active {
           display: flex;
@@ -431,6 +474,7 @@ body {
 
         img {
           border-radius: 16px;
+          max-width: 70%;
         }
       }
     }
@@ -496,32 +540,28 @@ body {
       }
     }
 
+    svg {
+      transition: all 0.3s ease;
+      cursor: pointer;
+      z-index: 1000;
+      &.left {
+        position: absolute;
+        left: 15px;
+      }
+      &.right {
+        position: absolute;
+        left: calc(var(--screen-width) - 85px);
+      }
+    }
     .cards-container {
       margin: auto;
       position: relative;
 
-      &.show-last {
+      /* &.show-last {
         .cards {
           margin-left: -236px;
         }
-      }
-
-      svg {
-        transition: all 0.3s ease;
-        cursor: pointer;
-        &.left {
-          position: absolute;
-          top: 50%;
-          transform: translate(0px, -50%);
-          left: -75px;
-        }
-        &.right {
-          position: absolute;
-          top: 50%;
-          transform: translate(0px, -50%);
-          left: calc(var(--screen-width) - 200px);
-        }
-      }
+      } */
 
       .cards {
         gap: 32px;
@@ -582,9 +622,9 @@ body {
         cursor: pointer;
         transition: all 0.3s ease;
 
-        &[data-place="0"] {
+        /* &[data-place="0"] {
           opacity: 1;
-        }
+        } */
       }
     }
   }
@@ -628,10 +668,94 @@ body {
     }
   }
 }
-@media (min-width: 846px) {
+/* @media (min-width: 768px) and (max-width: 991px) {
+  .image-cols {
+    gap: 12px !important;
+  }
+
+  header {
+    padding: 16px 10px !important;
+  }
+
+  .links-container {
+    gap: 8px !important;
+    a {
+      font-size: 12px !important;
+    }
+  }
+} */
+
+@media (min-width: 992px) and (max-width: 1599px) {
+  header {
+    padding: 16px 20px !important;
+  }
+
+  .hero {
+    .banner-container {
+      max-width: 60%;
+      min-width: unset !important;
+      height: auto !important;
+    }
+  }
+
+  #schedule {
+    .content {
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  #spotlight {
+    padding: 48px 0 !important;
+    gap: 32px !important;
+    /* overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+    &::-webkit-scrollbar {
+      display: none;
+    } */
+
+    .cards-container {
+      display: flex !important;
+      overflow-x: auto !important;
+      scroll-snap-type: x mandatory !important;
+      -webkit-overflow-scrolling: touch !important;
+      scrollbar-width: none !important;
+      -ms-overflow-style: none !important;
+      padding: 0px 75px;
+      max-width: 100%;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      svg.left {
+        /* left: 0 !important;
+        position: sticky !important;
+        transform: translate(0, 50%) !important; */
+      }
+
+      svg.right {
+        /* position: sticky !important;
+        right: 0 !important;
+        left: unset !important;
+        transform: translate(0, 25%) !important; */
+      }
+    }
+  }
 }
 
-@media (max-width: 845px) {
+mob-header {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  mob-header {
+    display: flex !important;
+    width: 100%;
+  }
   body:has(.header-menu.active) {
     .mobile-header .buttons-container svg[viewBox="0 0 17 15"] {
       display: block;
@@ -643,18 +767,20 @@ body {
 
   .header-menu {
     display: flex !important;
-    position: absolute;
+    position: fixed;
     background: #fff;
     z-index: 100;
     width: 100%;
-    left: -20px;
     flex-direction: column;
-    padding: 0 20px;
-    top: -500px;
     transition: all 0.3s ease;
+    height: 100%;
+    left: 0;
+    max-width: 100%;
+    top: -100%;
+    padding: 0 20px;
 
     &.active {
-      top: 46px;
+      top: 60px !important;
     }
     a {
       color: #000;
@@ -700,6 +826,13 @@ body {
     font-family: "TTNorms";
     margin: 0;
 
+    &:has(.header-menu.active) {
+      header {
+        box-shadow: none !important;
+        border-bottom: 0 !important;
+      }
+    }
+
     header {
       padding: 15px 20px;
       box-shadow: 0px 2px 8px 0px #0055ff14;
@@ -716,6 +849,10 @@ body {
       flex-direction: column;
       padding-bottom: 48px;
       gap: 32px;
+
+      span br {
+        display: none;
+      }
 
       .content {
         padding: 0 20px;
@@ -789,6 +926,7 @@ body {
         width: 100%;
         border-radius: 0;
         gap: 12px;
+        width: fit-content;
 
         h3 {
           margin-top: 32px;
@@ -798,7 +936,8 @@ body {
           line-height: 32px;
         }
         .items-container {
-          margin: 0 20px;
+          padding: 0 20px 48px;
+          margin: 0 !important;
 
           .schedule-item {
             height: fit-content;
@@ -842,6 +981,8 @@ body {
 
           .content {
             order: 1;
+            max-width: 100%;
+            width: 100% !important;
 
             .title {
               font-size: 28px;
@@ -850,7 +991,8 @@ body {
           }
 
           img {
-            width: 100%;
+            width: 100% !important;
+            max-width: 100% !important;
           }
         }
       }
