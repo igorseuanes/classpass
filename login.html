@@ -223,7 +223,6 @@
     const submit = document.querySelector('button[type="submit"]');
     submit.addEventListener("click", (e) => {
       e.preventDefault();
-      console.log("replace");
       window.location.replace("thanks.html");
     });
 
@@ -244,7 +243,6 @@
     // });
 
     const inputs = document.querySelectorAll("input[type='text']");
-    console.log(inputs);
     const emailInput = document.querySelector("[type='email']");
     const phoneInput = document.querySelector("[type='number']");
     const consentInput = document.querySelector("[type='checkbox']");
@@ -262,7 +260,6 @@
       const allFilled = Array.from(inputs).every(
         (input) => input.value.trim() !== "",
       );
-      console.log({ isEmailValid, isPhoneValid, allFilled });
       button.disabled = !(
         allFilled &&
         isEmailValid &&
@@ -303,7 +300,6 @@
         options.forEach((opt) => opt.classList.remove("selected"));
         option.classList.add("selected");
 
-        console.log("Selected value:", option.dataset.value);
         validateForm();
       });
     });

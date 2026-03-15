@@ -345,7 +345,6 @@
     header.addEventListener("click", (e) => {
       const target = e.target;
       if (!target.closest("a, button, .logo, .menu-toggle")) {
-        console.log("deve rodar");
         window.scrollTo({ top, behavior: "smooth" });
       }
     });
@@ -356,7 +355,6 @@
       const screenWidth = window.innerWidth;
 
       root.style.setProperty("--screen-width", screenWidth + "px");
-      console.log("resize", root.style.getPropertyValue("--screen-width"));
     });
     root.style.setProperty("--screen-width", screenWidth + "px");
 
@@ -582,9 +580,7 @@
           if (entry.isIntersecting) {
             const index = Array.from(allCards).indexOf(entry.target);
             activeSpotlightIndex = index;
-            console.log("activeSpotlightIndex ", activeSpotlightIndex);
             changeDots(activeSpotlightIndex);
-            console.log("ran change dots");
           }
         });
       },
