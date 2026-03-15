@@ -512,11 +512,13 @@ body {
     }
 
     &:has(.cards-container.show-last) {
-      .dot[data-place="0"] {
-        opacity: 0.2 !important;
-      }
-      .dot[data-place="1"] {
-        opacity: 1;
+      .dots-container {
+        .dot[data-place="0"] {
+          opacity: 0.2 !important;
+        }
+        .dot[data-place="1"] {
+          opacity: 1;
+        }
       }
 
       svg[viewBox="0 0 40 40"] {
@@ -685,7 +687,7 @@ body {
   }
 } */
 
-@media (min-width: 992px) and (max-width: 1599px) {
+@media (min-width: 1026px) and (max-width: 1599px) {
   header {
     padding: 16px 20px !important;
   }
@@ -751,7 +753,7 @@ mob-header {
   display: none;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1025px) {
   mob-header {
     display: flex !important;
     width: 100%;

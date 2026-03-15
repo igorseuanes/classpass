@@ -584,6 +584,7 @@
             activeSpotlightIndex = index;
             console.log("activeSpotlightIndex ", activeSpotlightIndex);
             changeDots(activeSpotlightIndex);
+            console.log("ran change dots");
           }
         });
       },
@@ -593,10 +594,10 @@
 
     const mobdots = document.querySelectorAll(".mobile-dots-container .dot");
     const changeDots = (index) => {
-      mobdots.forEach((d) => d.classList.remove("active"));
+      [...mobdots, ...dots].forEach((d) => d.classList.remove("active"));
       mobdots[index].classList.add("active");
 
-      dots.forEach((d) => d.classList.remove("active"));
+      // dots.forEach((d) => d.classList.remove("active"));
 
       const isStart = index < 2;
 
